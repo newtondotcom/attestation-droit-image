@@ -7,6 +7,7 @@
 
     import { onMount } from "svelte";
     import { genPDF } from "./gen";
+    import { goto } from "$app/navigation";
 
     let src = "";
     let doc: any;
@@ -22,7 +23,8 @@
     }
 
     function sendPdf() {
-        doc.save('test.pdf');
+        //doc.save('test.pdf');
+        goto("/success");
     }
 
 </script>
@@ -31,8 +33,8 @@
 <div class="fixed bottom-10 left-0 right-0 flex flex-col justify-center items-center">
     <div class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
         <button
-        class="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
-        title="Delete Product"
+        class="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative "
+        title="Supprimer l'attestation"
         on:click={dlPdf}
         >
         <svg
@@ -41,7 +43,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="h-4 w-4"
+            class="w-8 h-8"
         >
             <path
             stroke-linecap="round"
@@ -53,7 +55,7 @@
 
         <button
         class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
-        title="Edit Product"
+        title="L'envoyer"
         on:click={sendPdf}
         >
         <svg 
@@ -62,7 +64,7 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="h-4 w-4"
+        class="w-8 h-8"
         >
             <path 
             stroke="#000000" 
@@ -80,8 +82,8 @@
 
 <style lang="postcss">
     iframe {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         border: none;
     }
 </style>
