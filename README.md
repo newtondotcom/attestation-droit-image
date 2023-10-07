@@ -6,4 +6,4 @@ Ce repo contient 3 formes d'attestation de droit à l'image, à utiliser pour le
 
 - La seconde est générée en utilisant une bibliothèque Node.
 
-- La troisième est générée en utilisant depuis une page web avec le framework Svelte.
+- La troisième est générée et signée depuis une page web avec le framework Svelte.
