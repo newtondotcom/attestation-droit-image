@@ -2,7 +2,7 @@ import addfont from "./font";
 import { jsPDF } from "jspdf";
 
 
-export function genPDF(nom, adresse, telephone, lieux) {
+export function genPDF(nom:string, adresse:string, telephone:string, lieux:string) {
     let date = new Date().toLocaleDateString();
     let duration = "3";
 
