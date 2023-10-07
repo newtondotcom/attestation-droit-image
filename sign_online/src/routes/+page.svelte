@@ -58,6 +58,8 @@
   />
 {:else}
 <div class="text-lg flex flex-col justify-center items-center h-screen">
+<h1 class="mb-4 mx-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Générer une autorisation au droit à l'image</h1>
+
   <label
   class="block mt-4 sm:w-3/4 xl:w-1/3 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
   >
