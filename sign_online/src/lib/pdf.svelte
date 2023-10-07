@@ -1,87 +1,87 @@
 <script lang="ts">
-    export let nom;
-    export let adresse;
-    export let telephone;
-    export let lieux;
+    export let nom:string;
+    export let adresse:string;
+    export let telephone:string;
+    export let lieux:string;
+    export let displaypdf:boolean;
 
-    import addfont from "./font";
+    import { onMount } from "svelte";
+    import { genPDF } from "./gen";
 
-    let date = "";
-    let duration = "3";
+    let src = "";
+    let doc: any;
 
-    import { jsPDF } from "jspdf";
-    var doc = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4',
-        margins: { top: 10, right: 10, bottom: 10, left: 10 },
+    onMount(() => {
+        doc = genPDF(nom, adresse, telephone, lieux);
+        src = doc.output('datauristring')
     });
 
-    addfont(doc);
-
-    // Set font sizes and line heights
-    var fontSize = 12;
-    var lineHeight = 7;
-    var pageHeight = doc.internal.pageSize.height;
-
-    //doc.addImage("./apie.png", "PNG", 15, 40, 180, 180);
-
-    // Function to add text with page break handling
-    function addTextWithPageBreak(text, x, y, options  = {}) {
-    var lines = doc.splitTextToSize(text, options && options.maxWidth || 170);
-    var cursorY = y;
-
-    lines.forEach(function (line) {
-        if (cursorY + lineHeight > pageHeight - 20) {
-        // Add a new page if content goes beyond the page height
-        doc.addPage();
-        cursorY = 20;
-        }
-        doc.text(x, cursorY, line, options);
-        cursorY += lineHeight;
-    });
+    function dlPdf() {
+        displaypdf = false;
+        console.log(doc);
     }
 
-    // Set text styles
-    doc.setFontSize(fontSize);
+    function sendPdf() {
+        doc.save('test.pdf');
+    }
 
-    // Add section title
-    doc.setFont("helvetica", "bold");
-    addTextWithPageBreak('Projet d’autorisation d’exploiter l’image d’une personne photographiée', 20, 20, { maxWidth: 170 });
-
-
-    // Add disclaimer
-    /*
-    doc.setFontSize(12);
-    addTextWithPageBreak('L’exploitation de l’image d’une personne est subordonnée à son autorisation sauf dans des cas spécifiques.', 20, 40, { maxWidth: 170 });
-    */
-
-    // Add personal information
-    doc.setFont("helvetica", "normal");
-    let sousline = 40;
-    addTextWithPageBreak('Je soussigné(e)  ' + nom, 20, sousline);
-    addTextWithPageBreak('Demeurant au   ' + adresse, 20, sousline + lineHeight);
-    addTextWithPageBreak('Ayant comme numéro de téléphone     ' + telephone, 20, sousline + 2 * lineHeight);
-
-    // Add consent paragraph
-    var consentText = `Consens à être photographié(e) le ${date} par M. Augereau Robin, agissant en tant que Entrepreneur individuel pour le compte de sa micro-entreprise, dans le cadre d’une production tournée ce jour et l'autorise  à reproduire et à diffuser, directement ou par l’intermédiaire de tiers, à titre non exclusif et pour le monde entier, les photographies me représentant ainsi qu’à exploiter ces clichés, en partie ou en totalité, sous toute forme et sur tous supports y compris dans le cadre d’exploitations commerciales.
-    Le droit d’exploiter les photographies me représentant comprend notamment :
-        - Documents de communication physique ou numérique (brochures, cartes de visite, papier à en-tête, affiches, kakémonos, site Internet, bannières…)
-        - Édition numérique (cd-rom, dvd, cd photo, vidéodisque…)
-        - Articles de presse (magazines, quotidiens et périodiques accrédités par la commission paritaire)
-        - Annonce presse (insertion publicitaire dans la presse)
-        - Internet (ordinateurs fixes et portables, smartphones, tablettes...)
-
-    Les utilisations de mon image ne devront en aucune façon porter atteinte à ma vie privée, et plus généralement me nuire ou me causer un quelconque préjudice.
-    Je reconnais par ailleurs que je ne suis lié(e) à aucun contrat exclusif sur l’utilisation de mon image ou de mon nom.
-    Cette autorisation de l’utilisation de mon image à une validité de ${duration} ans à compter de sa signature et est consentie à titre gracieux.`;
-
-    addTextWithPageBreak(consentText, 20, 70, { maxWidth: 170 });
-
-    // Add signature line
-    doc.text('Fait à  ' + lieux + ', le ' + date, 20, 250);
-    doc.text('Signature de l’intéressé(e)', 140, 250);
-    doc.setFont("PermanentMarker-Regular", "normal");
-    doc.text("robin ayugreau",  140, 265);
-    doc.save("autorisation_exploitation_image.pdf");
 </script>
+
+<iframe src={src} title="test" class="z-30" id="pdf"></iframe>
+<div class="fixed bottom-10 left-0 right-0 flex flex-col justify-center items-center">
+    <div class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
+        <button
+        class="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative"
+        title="Delete Product"
+        on:click={dlPdf}
+        >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-4 w-4"
+        >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+            />
+        </svg>
+        </button>
+
+        <button
+        class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
+        title="Edit Product"
+        on:click={sendPdf}
+        >
+        <svg 
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-4 w-4"
+        >
+            <path 
+            stroke="#000000" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+            d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z"
+           /> 
+        </svg>
+        </button>
+    
+
+    </div>
+</div>
+
+<style lang="postcss">
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
