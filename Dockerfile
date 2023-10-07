@@ -4,7 +4,7 @@ LABEL Developers="Robin Augereau"
 
 WORKDIR /app
 
-COPY --chown=node:node sign_online/ .
+COPY --chown=node:node v3/ .
 
 RUN npm install
 RUN npm run build
