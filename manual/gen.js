@@ -6,6 +6,9 @@ var doc = new jsPDF({
   margins: { top: 10, right: 10, bottom: 10, left: 10 },
 });
 
+import addfont from "./font.js";
+addfont(doc);
+
 // Set font sizes and line heights
 var fontSize = 12;
 var lineHeight = 7;
@@ -78,5 +81,9 @@ doc.text('Fait à  ' + lieux + ', le ' + date, 20, 250);
 //doc.line(80, 270, 150, 270); // Signature line
 doc.text('Signature de l’intéressé(e)', 140, 250);
 
-// Save or download the generated PDF
+
+doc.setFont("PermanentMarker-Regular", "normal");
+doc.text("robin ayugreau",  140, 265);
+
+
 doc.save("autorisation_exploitation_image.pdf");
