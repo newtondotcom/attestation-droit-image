@@ -57,7 +57,7 @@
   <ul class="mt-12 flex justify-center gap-6 md:gap-8">
     <li>
       <a
-        href="/"
+        href="https://www.instagram.com/newton.creations/"
         rel="noreferrer"
         target="_blank"
         class="text-gray-700 transition hover:text-gray-700/75"
@@ -77,10 +77,10 @@
         </svg>
       </a>
     </li>
-
+  
     <li>
       <a
-        href="/"
+        href="https://github.com/newtondotcom/locapark"
         rel="noreferrer"
         target="_blank"
         class="text-gray-700 transition hover:text-gray-700/75"
@@ -100,15 +100,15 @@
         </svg>
       </a>
     </li>
-
+  
     <li>
       <a
-        href="/"
+        href="https://www.linkedin.com/in/robin-augereau/"
         rel="noreferrer"
         target="_blank"
         class="text-gray-700 transition hover:text-gray-700/75"
       >
-        <span class="sr-only">Dribbble</span>
+        <span class="sr-only">LinkedIn</span>
         <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
