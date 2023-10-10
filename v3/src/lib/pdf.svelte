@@ -9,10 +9,16 @@
     import { genPDF } from "./gen";
     import { goto } from "$app/navigation";
 
-    let src = "";
+    let src:string = "";
     let doc: any;
+    let mobile:boolean;
 
     onMount(() => {
+        if (window.innerWidth < 768) {
+            mobile = true;
+        } else {
+            mobile = false;
+        }
         doc = genPDF(nom, adresse, telephone, lieux);
         src = doc.output('datauristring')
     });
@@ -23,6 +29,7 @@
     }
 
     function sendPdf() {
+        _postPDF(doc.output('blob'));
         //doc.save('test.pdf');
         goto("/success");
     }
