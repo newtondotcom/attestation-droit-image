@@ -10,3 +10,12 @@ declare global {
 }
 
 export {};
+
+declare module "$env/static/private" {
+	export const env = {
+		MINIO_ENDPOINT: string,
+		MINIO_PORT: number,
+		MINIO_ACCESS_KEY: string,
+		MINIO_SECRET_KEY: string,
+	};
+}
