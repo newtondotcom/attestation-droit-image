@@ -38,7 +38,7 @@
       />
     </svg>
 
-    <strong class="block font-medium"> Something went wrong </strong>
+    <strong class="block font-medium"> Quelque chose a planté quelque part ... </strong>
   </div>
 
   <p class="mt-2 text-sm text-red-700">
