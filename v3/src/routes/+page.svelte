@@ -1,13 +1,15 @@
 <script lang="ts">
+  import { goto } from "$app/navigation";
+  import { genPDF } from "$lib/gen";
+  import { pdfStore } from "$lib/store";
+
   var nom = "";
   var adresse = "";
   var telephone = "";
   var lieux = "";
 
-  let displaypdf = false;
   let error = false;
-
-  import Pdf from "$lib/pdf.svelte";
+  let doc: any;
 
   function genpdf() {
     if (nom == "" || adresse == "" || telephone == "" || lieux == "") {
@@ -15,9 +17,11 @@
       setTimeout(() => {
         error = false;
       }, 1000);
-      return;
+    } else {
+      doc = genPDF(nom, adresse, telephone, lieux);
+      pdfStore.set(doc);
+      goto("/pdf");
     }
-    displaypdf = true;
   };
 </script>
 
@@ -48,15 +52,6 @@
 </div>
 {/if}
 
-{#if displaypdf}
-  <Pdf
-  nom={nom}
-  adresse={adresse}
-  telephone={telephone}
-  lieux={lieux}
-  bind:displaypdf
-  />
-{:else}
 <div class="text-lg flex flex-col justify-center items-center h-screen">
 <h1 class="mb-4 mx-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Générer une autorisation au droit à l'image</h1>
 
@@ -108,7 +103,6 @@
     Générer mon attestation
   </button>
 </div>
-{/if}
   
 <style lang="postcss">
 </style>
