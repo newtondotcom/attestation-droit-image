@@ -1,4 +1,5 @@
 import type { Writable } from "stream";
 import { writable } from "svelte/store";
 
-export const pdfStore = writable<Writable>();
+export const pdfStoreUri = writable<Writable>();
+export const pdfStoreBlob = writable<string>();
