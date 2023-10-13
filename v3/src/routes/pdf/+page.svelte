@@ -1,9 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
-    import { pdfStore } from "$lib/store";
+    import { pdfStoreUri, pdfStoreBlob } from "$lib/store";
 
-    let src:string = "";
+    let src:any = "";
     let doc: any;
     let mobile:boolean;
 
@@ -13,21 +13,29 @@
         } else {
             mobile = false;
         }
-        pdfStore.subscribe((value) => {
-            doc = value;
+        pdfStoreUri.subscribe((value) => {
+            src = value;
         });
-        src = doc.output('datauristring')
     });
 
     function dlPdf() {
         console.log(doc);
     }
 
-    function sendPdf() {
-        _postPDF(doc.output('blob'),"attestation.pdf");
-        //doc.save('test.pdf');
-        goto("/success");
-    }
+    async function sendPdf() {
+        pdfStoreBlob.subscribe((value) => {
+            doc = value;
+        });
+		const response = await fetch('/api/pdf', {
+			method: 'POST',
+			body: doc,
+			headers: {
+				'content-type': 'application/json'
+			}
+		});
+		const total = await response.json();
+        goto('/success');
+	}
 
 </script>
 
