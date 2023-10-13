@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { genPDF } from "$lib/gen";
-  import { pdfStore } from "$lib/store";
+  import { pdfStoreUri, pdfStoreBlob } from "$lib/store";
 
   var nom = "";
   var adresse = "";
@@ -19,7 +19,8 @@
       }, 1000);
     } else {
       doc = genPDF(nom, adresse, telephone, lieux);
-      pdfStore.set(doc);
+      pdfStoreUri.set(doc.output("datauristring"));
+      pdfStoreBlob.set(doc.output("blob"));
       goto("/pdf");
     }
   };
