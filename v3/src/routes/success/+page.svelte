@@ -2,8 +2,8 @@
     import { goto } from "$app/navigation";
 </script>
 
-<div class="flex flex-col justify-center items-center h-screen">
-<div role="alert" class="rounded-xl border border-gray-100 bg-white p-4 w-3/4">
+<div class="flex flex-col justify-center items-center h-screen w-screen">
+<div role="alert" class="rounded-xl border border-gray-100 bg-white p-4 xl:w-3/5">
     <div class="flex items-start gap-4">
       <span class="text-green-600">
         <svg
