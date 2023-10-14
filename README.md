@@ -10,7 +10,7 @@ Ce repo contient 3 formes d'autorisation d'exploitation de l'image, à utiliser 
 
 # Prestations 
 
-Les prestations sont les suivantes :
+Les prestations que je propose sont les suivantes :
 - vol en intérieur cinématique : publicités, visites immobilières virtuelles, etc.
 - vol en extérieur : publicités, captures d'évènements, etc.
 
@@ -23,4 +23,4 @@ Les 3 formes correspondent à 3 étapes de développement du projet.
 
 - La seconde est générée en utilisant une bibliothèque Node. Il s'agit d'un test de la librairie permettant de générer des pdfs.
 
-- La troisième, nommée sign_online, est une web app faite avec Svelte qui permet de générer et signer numériquement l'autorisation ainsi que lui appliquer un traitement. 
+- La troisième, présente dans le dossier `v3`, est une web app faite avec Svelte qui permet de générer et signer numériquement l'autorisation ainsi que lui appliquer un traitement. 
