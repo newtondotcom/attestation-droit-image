@@ -26,8 +26,8 @@
 	"type": "module",
 	"dependencies": {
 		"@types/nprogress": "^0.2.1",
-		"jspdf": "^2.5.1",
 		"minio": "^7.1.3",
-		"nprogress": "^0.2.0"
+		"nprogress": "^0.2.0",
+		"pdfkit": "^0.13.0"
 	}
 }
