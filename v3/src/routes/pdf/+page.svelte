@@ -1,16 +1,16 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
-    import { pdfStoreUri, pdfStoreBlob } from "$lib/store";
+    import { pdfStoreUri} from "$lib/store";
+
+    export let data:any;
 
     let src:any = "";
-    let doc: any;
     let mobile:boolean;
 
     onMount(() => {
-        pdfStoreUri.subscribe((value) => {
-            src = value;
-        });
+        src = data.pdfURi;
+        pdfStoreUri.set(data.pdfURi);
         if (window.innerWidth < 768) {
             mobile = true;
         } else {
@@ -19,21 +19,23 @@
     });
 
     function dlPdf() {
-        console.log(doc);
+        const res = fetch('/api/dl', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: encodeURIComponent("test.pdf")
+        });
     }
 
     async function sendPdf() {
-        pdfStoreBlob.subscribe((value) => {
-            doc = value;
+        const res = await fetch('/api/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: encodeURIComponent("test.pdf")
         });
-		const response = await fetch('/api/pdf', {
-			method: 'POST',
-			body: doc,
-			headers: {
-				'content-type': 'application/json'
-			}
-		});
-		const total = await response.json();
         goto('/success');
 	}
 
