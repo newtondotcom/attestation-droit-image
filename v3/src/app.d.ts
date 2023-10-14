@@ -10,3 +10,4 @@ declare global {
 }
 
 export {};
+declare module 'pdfkit';
