@@ -14,7 +14,14 @@
       setTimeout(() => {
         error = false;
       }, 1000);
-    } else {
+    } else if (telephone.length != 10) {
+      error = true;
+      setTimeout(() => {
+        error = false;
+      }, 1000);
+      console.log("pb avec le telephone");
+    }    
+    else {
       goto("/pdf?nom=" + nom + "&adresse=" + adresse + "&telephone=" + telephone + "&lieux=" + lieux);
     }
   };
@@ -48,10 +55,8 @@
         clip-rule="evenodd"
       />
     </svg>
-
     <strong class="block font-medium"> Quelque chose a planté quelque part ... </strong>
   </div>
-
   <p class="mt-2 text-sm text-red-700">
     Merci de compléter tous les champs.
   </p>
