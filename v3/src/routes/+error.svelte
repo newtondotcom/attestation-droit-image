@@ -6,7 +6,7 @@
         Uh-oh!
       </p>
   
-      <p class="mt-4 text-gray-500">We can't find that page.</p>
+      <p class="mt-4 text-gray-500">Il y a eu un problème quelque part.</p>
   
       <a
         href="/"
