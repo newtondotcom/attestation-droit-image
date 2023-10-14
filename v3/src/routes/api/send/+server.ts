@@ -46,7 +46,8 @@ async function postPDF(pdfFilePath:string, filename:string) {
   
       const url = await minioClient.presignedGetObject(bucketName, filename, 60 * 60 * 24); // 1 day
   
-      return url;
+      const path = "static/"+filename;
+      fs.unlinkSync(path);
     } catch (error) {
       console.error('Error:', error);
       throw error;
