@@ -1,7 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
-    import { pdfStoreUri} from "$lib/store";
 
     export let data:any;
 
@@ -10,7 +9,6 @@
 
     onMount(() => {
         src = data.pdfURi;
-        pdfStoreUri.set(data.pdfURi);
         if (window.innerWidth < 768) {
             mobile = true;
         } else {
@@ -24,8 +22,9 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: encodeURIComponent("test.pdf")
+            body: encodeURIComponent(data.pdfURi)
         });
+        goto('/');
     }
 
     async function sendPdf() {
@@ -34,13 +33,12 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: encodeURIComponent("test.pdf")
+            body: encodeURIComponent(data.pdfURi)
         });
         goto('/success');
 	}
 
 </script>
-
 <iframe src={src} title="test" class="z-30" id="pdf"></iframe>
 <div class="fixed bottom-10 left-0 right-0 flex flex-col justify-center items-center">
     <div class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
@@ -67,7 +65,7 @@
 
         <button
         class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
-        title="L'envoyer"
+        title="Envoyer l'attestation"
         on:click={sendPdf}
         >
         <svg 
