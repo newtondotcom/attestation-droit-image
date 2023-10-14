@@ -1,7 +1,5 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { genPDF } from "$lib/gen";
-  import { pdfStoreUri, pdfStoreBlob } from "$lib/store";
 
   var nom = "";
   var adresse = "";
@@ -9,7 +7,6 @@
   var lieux = "";
 
   let error = false;
-  let doc: any;
 
   function genpdf() {
     if (nom == "" || adresse == "" || telephone == "" || lieux == "") {
@@ -18,9 +15,8 @@
         error = false;
       }, 1000);
     } else {
-      doc = genPDF(nom, adresse, telephone, lieux);
-      pdfStoreUri.set(doc.output("datauristring"));
-      pdfStoreBlob.set(doc.output("blob"));
+      //pdfStoreUri.set(doc.output("datauristring"));
+      //pdfStoreBlob.set(doc.output("blob"));
       goto("/pdf");
     }
   };
@@ -104,6 +100,3 @@
     Générer mon attestation
   </button>
 </div>
-  
-<style lang="postcss">
-</style>
