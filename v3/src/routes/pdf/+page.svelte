@@ -8,14 +8,14 @@
     let mobile:boolean;
 
     onMount(() => {
+        pdfStoreUri.subscribe((value) => {
+            src = value;
+        });
         if (window.innerWidth < 768) {
             mobile = true;
         } else {
             mobile = false;
         }
-        pdfStoreUri.subscribe((value) => {
-            src = value;
-        });
     });
 
     function dlPdf() {
