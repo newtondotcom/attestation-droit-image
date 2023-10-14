@@ -7,7 +7,6 @@ import fs from 'fs';
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
 	const datas = await request.text();
-    console.log(datas);
     postPDF("static/"+decodeURIComponent(datas), decodeURIComponent(datas));
     return json({ success: true });
 }
@@ -45,9 +44,7 @@ async function postPDF(pdfFilePath:string, filename:string) {
         });
       });
   
-      // Generate a pre-signed URL for the uploaded object (valid for 1 day)
       const url = await minioClient.presignedGetObject(bucketName, filename, 60 * 60 * 24); // 1 day
-      console.log('Pre-signed URL:', url);
   
       return url;
     } catch (error) {
