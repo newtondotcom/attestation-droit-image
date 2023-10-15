@@ -1,8 +1,7 @@
 FROM node:18-alpine
 LABEL Developers="Robin Augereau"
 WORKDIR /app
-COPY --chown=node:node v3 /app
-COPY --chown=node:node v3/.env /app
+COPY --chown=node:node v3 v3/.env /app
 RUN npm install
 RUN npm run build
 RUN rm -rf src/ static/ Dockerfile
