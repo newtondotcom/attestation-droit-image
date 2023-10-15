@@ -1,10 +1,10 @@
 FROM node:18-alpine
 LABEL Developers="Robin Augereau"
+USER node:node
+EXPOSE 3000
 WORKDIR /app
 COPY --chown=node:node v3 v3/.env /app
 RUN npm install
 RUN npm run build
 RUN rm -rf src/ static/ Dockerfile
-USER node:node
-EXPOSE 3000
 CMD ["node","build/index.js"]
