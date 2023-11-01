@@ -11,7 +11,7 @@ let date:string;
 let duration:string = "3";
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ url }) {
+export async function load({ url }:any) {
     try {
         date = new Date().toLocaleDateString('fr-FR', {year: 'numeric', month: 'long', day: 'numeric'});
         nom = url.searchParams.get('nom');
