@@ -38,6 +38,10 @@
         goto('/success');
 	}
 
+    function savePdf() {
+        null;
+    }
+
 </script>
 <iframe src={src} title="test" class="z-30" id="pdf"></iframe>
 <div class="fixed bottom-10 left-0 right-0 flex flex-col justify-center items-center">
@@ -66,7 +70,7 @@
         <button
         class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
         title="Envoyer l'attestation"
-        on:click={sendPdf}
+        on:click={savePdf}
         >
         <svg 
         xmlns="http://www.w3.org/2000/svg"
@@ -76,13 +80,7 @@
         stroke="currentColor"
         class="w-8 h-8"
         >
-            <path 
-            stroke="#000000" 
-            stroke-width="2" 
-            stroke-linecap="round" 
-            stroke-linejoin="round"
-            d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z"
-           /> 
+        <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
         </svg>
         </button>
     
