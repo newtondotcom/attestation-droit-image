@@ -1,0 +1,44 @@
+<script>
+    import { goto } from "$app/navigation";
+    import Canvas from "$lib/Canvas.svelte";
+    import { onMount } from "svelte";
+
+    let loading = false;
+
+    async function trigger() {
+        loading = true;
+        const res = await fetch("/api/gen", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nom: sessionStorage.getItem("nom"),
+                adresse: sessionStorage.getItem("adresse"),
+                telephone: sessionStorage.getItem("telephone"),
+                lieux: sessionStorage.getItem("lieux"),
+                signature: sessionStorage.getItem("signature"),
+            }),
+        });
+        const data = await res.json();
+        console.log(data);
+        loading = false;
+        goto("/success");
+    }
+
+    onMount(() => {
+        let nom = sessionStorage.getItem("nom");
+        let adresse = sessionStorage.getItem("adresse");
+        let telephone = sessionStorage.getItem("telephone");
+        let lieux = sessionStorage.getItem("lieux");
+
+        if (nom == null || adresse == null || telephone == null || lieux == null) {
+            goto("/");
+        }
+    });
+
+</script>
+
+<h1 class="mb-4 mx-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Signez votre attestation</h1>
+
+<Canvas width={300} height={300} color="#333" trigger={trigger} loading={loading}/>
