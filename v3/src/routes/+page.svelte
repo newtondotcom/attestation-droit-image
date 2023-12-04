@@ -22,7 +22,11 @@
       console.log("pb avec le telephone");
     }    
     else {
-      goto("/pdf?nom=" + nom + "&adresse=" + adresse + "&telephone=" + telephone + "&lieux=" + lieux);
+      sessionStorage.setItem("nom", nom);
+      sessionStorage.setItem("adresse", adresse);
+      sessionStorage.setItem("telephone", telephone);
+      sessionStorage.setItem("lieux", lieux);
+      goto("/sign");
     }
   };
 
@@ -112,6 +116,6 @@
     />
   </label>
   <button on:click={genpdf} class="mt-16 inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-indigo-500">
-    Générer mon attestation
+    Signer mon attestation
   </button>
 </div>
