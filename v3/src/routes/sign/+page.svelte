@@ -21,9 +21,9 @@
             }),
         });
         const data = await res.json();
-        console.log(data);
+        sessionStorage.setItem("pdfURI", data.pdfURI);
         loading = false;
-        goto("/success");
+        goto("/pdf");
     }
 
     onMount(() => {
