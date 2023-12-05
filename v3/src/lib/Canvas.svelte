@@ -25,16 +25,7 @@
         context.strokeStyle = color;
     }
     
-	const handleStart = (event: MouseEvent | TouchEvent) => {
-		let x: number, y: number;
-		if (event instanceof MouseEvent) {
-			x = event.offsetX;
-			y = event.offsetY;
-		} else if (event.touches && event.touches.length > 0) {
-			const touch = event.touches[0];
-			x = touch.clientX - l;
-			y = touch.clientY - t;
-		}
+	const handleStart = ({ offsetX: x, offsetY: y }) => {
 		isDrawing = true;
 		start = { x, y };
 	};
@@ -43,18 +34,19 @@
 		context.clearRect(0, 0, width, height);
 	};
 
-	const handleMove = (event: MouseEvent | TouchEvent) => {
-		let x1: number, y1: number;
-		if (event instanceof MouseEvent) {
-			x1 = event.offsetX;
-			y1 = event.offsetY;
-		} else if (event.touches && event.touches.length > 0) {
-			const touch = event.touches[0];
-			x1 = touch.clientX - l;
-			y1 = touch.clientY - t;
-		}
-
+	const handleMove = ({ offsetX: x1, offsetY: y1 }) => {
 		if (!isDrawing) return;
+
+		if (x1 >= 0 && x1 <= width && y1 >= 0 && y1 <= height) {
+            const { x, y } = start;
+            context.beginPath();
+            context.moveTo(x, y);
+            context.lineTo(x1, y1);
+            context.closePath();
+            context.stroke();
+
+            start = { x: x1, y: y1 };
+        }
 
 		const { x, y } = start;
 		context.beginPath();
