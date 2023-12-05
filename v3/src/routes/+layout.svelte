@@ -40,3 +40,19 @@
   
 
 <slot/>
+
+<style lang="postcss">
+  	:global(.visually-hidden:not(:focus):not(:active)) {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+	}
+	
+	:global(canvas) {
+		align-self: center;
+	}
+</style>
