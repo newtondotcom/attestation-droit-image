@@ -118,4 +118,5 @@
   <button on:click={genpdf} class="mt-16 inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-indigo-500">
     Signer mon attestation
   </button>
+  <div class="xl:h-20 sm:h-60"></div>
 </div>
