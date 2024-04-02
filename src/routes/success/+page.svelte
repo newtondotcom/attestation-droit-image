@@ -2,7 +2,7 @@
     import { goto } from "$app/navigation";
 </script>
 
-<div class="flex flex-col justify-center items-center h-screen w-screen">
+<div class="flex flex-col justify-center items-center h-screen w-screen -translate-y-1/4">
 <div role="alert" class="rounded-xl border border-gray-100 bg-white p-4 xl:w-3/5">
     <div class="flex items-start gap-4">
       <span class="text-green-600">
@@ -80,7 +80,7 @@
   
     <li>
       <a
-        href="https://github.com/newtondotcom/locapark"
+        href="https://github.com/newtondotcom/autorisation-exploitation-image"
         rel="noreferrer"
         target="_blank"
         class="text-gray-700 transition hover:text-gray-700/75"
