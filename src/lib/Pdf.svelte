@@ -42,9 +42,10 @@
 
 
 <PdfViewer 
-    url={src}
     showButtons={["zoom", "print", "rotate", "download"]}
     showBorder={true}
+    url={src}
+    data={src}
 />
 
 <div class="fixed bottom-10 left-0 right-0 flex flex-col justify-center items-center">
