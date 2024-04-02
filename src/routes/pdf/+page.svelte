@@ -2,15 +2,32 @@
     import Pdf from "$lib/Pdf.svelte";
     import { onMount } from "svelte";
 
-    var path:any;
-    let displaypdf:boolean = false;
+    let file: string;
+    let displaypdf: boolean = false;
 
-    onMount(()=> {
-        path = sessionStorage.getItem("pdfURI");
+    async function getFileStream() {
+        const res = await fetch("/api/stream", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                file: file,
+            }),
+        });
+        const data = await res.json();
+        file = data.file;
+        displaypdf = true;
+    }
+
+    onMount(async ()=> {
+        const urlParams = new URLSearchParams(window.location.search);
+        file = urlParams.get("file") || "";
+        await getFileStream();
         displaypdf = true;
     });
 </script>
 
 {#if displaypdf}
-<Pdf blob={path}/>
+    <Pdf content={file}/>
 {/if}
