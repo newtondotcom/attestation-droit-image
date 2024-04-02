@@ -1,17 +1,14 @@
 <script lang="ts">
     export let content:any;
+    export let name:any;
 
-    import { onMount } from "svelte";
     import { goto } from "$app/navigation";
-    import PdfViewer from 'svelte-pdf';
+    import PdfViewer from 'svelte-pdf'; 
 
-
-    let src:string = "";
     let loading:boolean = false;
+    
+    console.log(name);
 
-    onMount(() => {
-        src = content;
-    });
 
     function dlPdf() {
         const res = fetch('/api/dl', {
@@ -19,7 +16,7 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: encodeURIComponent(src)
+            body: name
         });
         goto('/');
     }
@@ -31,7 +28,7 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: encodeURIComponent(src)
+            body: name
         });
         loading = false;
         goto('/success');
@@ -43,13 +40,13 @@
 <PdfViewer 
     showButtons={["zoom", "print", "rotate", "download"]}
     showBorder={true}
-    data={atob(src)}
+    data={atob(content)}
 />
 
 <div class="fixed bottom-10 left-0 right-0 flex flex-col justify-center items-center">
     <div class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
         <button
-        class="inline-block p-3 text-gray-700 hover:bg-gray-50 focus:relative "
+        class="inline-block p-3 text-emerald-600 hover:bg-gray-50 focus:relative "
         title="Supprimer l'attestation"
         on:click={dlPdf}
         >
@@ -70,7 +67,7 @@
         </button>
 
         <button
-        class="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 focus:relative"
+        class="inline-block border-e p-3 text-emerald-600 hover:bg-gray-50 focus:relative"
         title="L'envoyer"
         on:click={sendPdf}
         >
@@ -86,7 +83,7 @@
         class="w-8 h-8"
         >
             <path 
-            stroke="#000000" 
+            stroke="currentColor" 
             stroke-width="2" 
             stroke-linecap="round" 
             stroke-linejoin="round"

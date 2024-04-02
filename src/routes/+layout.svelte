@@ -25,12 +25,12 @@
     >
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-    <img src="https://newton-creations.fr/favicon.ico" alt="logo" class="h-8 w-8" on:click={()=>goto("/")}>
+    <img src="https://droninside.fr/logo.png" alt="logo" class="h-8" on:click={()=>goto("/")}>
   
         <div class="flex flex-1 items-center justify-end md:justify-between">
           <ul class="flex items-center gap-6 text-sm">
             <li>
-              <a class="text-gray-500 transition hover:text-gray-500/75" href="https://newton-creations.fr/">
+              <a class="text-emerald-600 transition hover:text-emerald-600/75" href="https://droninside.fr/">
                 Mon Portfolio
               </a>
             </li>

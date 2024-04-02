@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
 
     let file: string;
+    let name : string;
     let displaypdf: boolean = false;
 
     async function getFileStream() {
@@ -12,7 +13,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                file: file,
+                file: name,
             }),
         });
         const data = await res.json();
@@ -22,12 +23,12 @@
 
     onMount(async ()=> {
         const urlParams = new URLSearchParams(window.location.search);
-        file = urlParams.get("file") || "";
+        name = urlParams.get("file") || "";
         await getFileStream();
         displaypdf = true;
     });
 </script>
 
 {#if displaypdf}
-    <Pdf content={file}/>
+    <Pdf content={file} name={name}/>
 {/if}

@@ -72,7 +72,7 @@
 <h1 class="mb-4 mx-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">Générer une autorisation au droit à l'image</h1>
 
   <label
-  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-emerald-600 focus-within:ring-1 focus-within:ring-emerald-600"
   >
     <div class="w-64 text-base font-medium text-gray-700">Prénom & Nom</div>
     <input
@@ -83,7 +83,7 @@
     />
   </label>
   <label
-  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-emerald-600 focus-within:ring-1 focus-within:ring-emerald-600"
   >
     <div class="w-64 text-base font-medium text-gray-700">Adresse</div>
     <input
@@ -94,7 +94,7 @@
     />
   </label>
   <label
-  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-emerald-600 focus-within:ring-1 focus-within:ring-emerald-600"
   >
     <div class="w-64 text-base font-medium text-gray-700">Téléphone</div>
     <input
@@ -105,7 +105,7 @@
     />
   </label>
   <label
-  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+  class="block mt-4 sm:w-3/4 xl:w-2/5 overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-emerald-600 focus-within:ring-1 focus-within:ring-emerald-600"
   >
     <div class="w-64 text-base font-medium text-gray-700">Fait à</div>
     <input
@@ -115,7 +115,7 @@
       class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
     />
   </label>
-  <button on:click={genpdf} class="mt-16 inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-indigo-500">
+  <button on:click={genpdf} class="mt-16 inline-block rounded bg-emerald-600 px-8 py-3 text-sm font-medium text-white transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:bg-emerald-500">
     Signer mon attestation
   </button>
   <div class="xl:h-20 sm:h-60"></div>
