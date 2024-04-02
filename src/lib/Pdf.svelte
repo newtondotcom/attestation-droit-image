@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let blob:any;
+    export let content:any;
 
     import { onMount } from "svelte";
     import { goto } from "$app/navigation";
@@ -10,8 +10,7 @@
     let loading:boolean = false;
 
     onMount(() => {
-        src = blob;
-        console.log(src);
+        src = content;
     });
 
     function dlPdf() {
@@ -44,8 +43,7 @@
 <PdfViewer 
     showButtons={["zoom", "print", "rotate", "download"]}
     showBorder={true}
-    url={src}
-    data={src}
+    data={atob(src)}
 />
 
 <div class="fixed bottom-10 left-0 right-0 flex flex-col justify-center items-center">
