@@ -11,7 +11,7 @@
 
 
     function dlPdf() {
-        const res = fetch('/api/dl', {
+        const res = fetch('/api/rm', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,7 +23,7 @@
 
     async function sendPdf() {
         loading = true;
-        const res = await fetch('/api/send', {
+        const res = await fetch('/api/upload', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
