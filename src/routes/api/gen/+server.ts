@@ -2,15 +2,14 @@ import PDFDocument from 'pdfkit';
 import { error, json } from '@sveltejs/kit';
 import fs from 'fs';
 
+const date = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+const duration = "3";
+
 let nom:string | null;
 let adresse:string| null;
-let telephone:string| null;
+let mail:string| null;
 let lieux:string| null;
-let date:string;
-let duration:string = "3";
 let signature:string| null;
-
-let pdfBlob:any;
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }:any) {
@@ -18,24 +17,20 @@ export async function POST({ request }:any) {
       const url = await request.json();  
       nom = url.nom;
       adresse = url.adresse;
-      telephone = url.telephone;
+      mail = url.mail;
       lieux = url.lieux;
       signature = url.signature;
   
-      // Check if required parameters are missing
-      if (!nom || !adresse || !telephone || !lieux) {
+      if (!nom || !adresse || !mail || !lieux) {
         return error(400, 'Missing required parameters');
       }
-  
-      // Generate the PDF
-      date = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+
       const common = "static/";
       const sanitizedNom = nom.replace(/[^a-zA-Z0-9]/g, '_').toLocaleLowerCase();
       const sanitizedDate = date.replace(/[^a-zA-Z0-9]/g, '_').toLocaleLowerCase();
       const filename = `${sanitizedNom}_${sanitizedDate}.pdf`;
-  
-      // Create a PDF document
-      await genPDFLocal(nom, adresse, telephone, lieux, common + filename);
+
+      await genPDFLocal(nom, adresse, mail, lieux, common + filename);
 
       return json({ pdfURI: "/" + filename})
     } catch (error) {
@@ -44,7 +39,7 @@ export async function POST({ request }:any) {
   }
   
 
-async function genPDFLocal(nom:string| null, adresse:string| null, telephone:string| null, lieux:string| null,path:string| null) {
+async function genPDFLocal(nom:string| null, adresse:string| null, mail:string| null, lieux:string| null,path:string| null) {
     return new Promise((resolve, reject) => {
         const margin = 50;
         const width = 595.28-margin*2;
@@ -79,7 +74,7 @@ async function genPDFLocal(nom:string| null, adresse:string| null, telephone:str
             doc.fontSize(13).text('Je soussigné(e)  ' + nom)
             ;
             doc.text('Demeurant au   ' + adresse);
-            doc.text('Ayant comme numéro de téléphone     ' + telephone)
+            doc.text('Ayant comme addresse mail     ' + mail)
             .moveDown();
 
         doc
@@ -112,7 +107,6 @@ async function genPDFLocal(nom:string| null, adresse:string| null, telephone:str
             */
 
         if (signature) {
-                const signatureBuffer = Buffer.from(signature, 'base64');
                 doc
                 .moveDown()
                 .moveDown()       

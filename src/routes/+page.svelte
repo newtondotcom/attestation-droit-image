@@ -3,28 +3,29 @@
 
   var nom = "";
   var adresse = "";
-  var telephone = "";
   var lieux = "";
+  var mail = "";
 
   let error = false;
 
   function genpdf() {
-    if (nom == "" || adresse == "" || telephone == "" || lieux == "") {
+    if (nom == "" || adresse == "" || mail == "" || lieux == "") {
       error = true;
       setTimeout(() => {
         error = false;
       }, 1000);
-    } else if (telephone.length != 10) {
+      console.log("pb avec les champs");
+    } else if (mail == "" || !mail.includes("@") || !mail.includes(".")) {
       error = true;
       setTimeout(() => {
         error = false;
       }, 1000);
-      console.log("pb avec le telephone");
+      console.log("pb avec le mail");
     }    
     else {
       sessionStorage.setItem("nom", nom);
       sessionStorage.setItem("adresse", adresse);
-      sessionStorage.setItem("telephone", telephone);
+      sessionStorage.setItem("mail", mail);
       sessionStorage.setItem("lieux", lieux);
       goto("/sign");
     }
@@ -99,8 +100,8 @@
     <div class="w-64 text-base font-medium text-gray-700">Téléphone</div>
     <input
       type="tel"
-      bind:value={telephone}
-      placeholder="0612345678"
+      bind:value={mail}
+      placeholder="michel.dupont@nmail.org"
       class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
     />
   </label>

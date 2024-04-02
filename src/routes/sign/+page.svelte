@@ -15,7 +15,7 @@
             body: JSON.stringify({
                 nom: sessionStorage.getItem("nom"),
                 adresse: sessionStorage.getItem("adresse"),
-                telephone: sessionStorage.getItem("telephone"),
+                mail: sessionStorage.getItem("lieux"),
                 lieux: sessionStorage.getItem("lieux"),
                 signature: sessionStorage.getItem("signature"),
             }),
@@ -29,10 +29,10 @@
     onMount(() => {
         let nom = sessionStorage.getItem("nom");
         let adresse = sessionStorage.getItem("adresse");
-        let telephone = sessionStorage.getItem("telephone");
+        let mail = sessionStorage.getItem("mail");
         let lieux = sessionStorage.getItem("lieux");
 
-        if (nom == null || adresse == null || telephone == null || lieux == null) {
+        if (nom == null || adresse == null || mail == null || lieux == null) {
             goto("/");
         }
     });
