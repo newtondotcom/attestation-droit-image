@@ -2,6 +2,8 @@
     import Pdf from "$lib/Pdf.svelte";
     import { onMount } from "svelte";
 
+    // goto using : /pdf?file=${data.pdfURI}
+
     let file: string;
     let name : string;
     let displaypdf: boolean = false;

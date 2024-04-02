@@ -23,7 +23,7 @@
         const data = await res.json();
         sessionStorage.setItem("pdfURI", data.pdfURI);
         loading = false;
-        goto(`/pdf?file=${data.pdfURI}`);
+        goto(`/mail`);
     }
 
     onMount(() => {
