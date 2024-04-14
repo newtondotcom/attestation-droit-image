@@ -1,5 +1,25 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
+    import { onMount } from "svelte";
+
+    onMount(async () => {
+    const data = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+                nom: sessionStorage.getItem("nom"),
+                adresse: sessionStorage.getItem("adresse"),
+                mail: sessionStorage.getItem("mail"),
+                lieux: sessionStorage.getItem("lieux"),
+                file_name: sessionStorage.getItem("pdfURI"),
+        }),
+    });
+    const res = await data.json();
+    console.log(res);
+    });
+
 </script>
 
 <div class="flex flex-col justify-center items-center h-screen w-screen -translate-y-1/4">
