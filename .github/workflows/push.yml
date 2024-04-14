@@ -1,7 +1,7 @@
 name: Build and Push Docker Images
 
 env:
-  DOCKER_TAG : newtondotcom/autorisation:latest
+  DOCKER_TAG : {{ secrets.DOCKERHUB_REPO }}
 
 on:
   workflow_dispatch:
