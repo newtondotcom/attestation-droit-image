@@ -1,4 +1,4 @@
-export interface attestation {
+declare interface attestation {
     nom : string,  
     adresse : string,
     lieux : string,

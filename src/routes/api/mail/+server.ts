@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 import { MAIL_HOST, MAIL_PORT, MAIL_SSL, MAIL_USER, MAIL_PWD } from '$env/static/private';
-import type { attestation } from "../../../types";
 
 const url = "http://localhost:3000/pdf?file=";
 

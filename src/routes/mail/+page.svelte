@@ -17,7 +17,11 @@
         }),
     });
     const res = await data.json();
-    console.log(res);
+    sessionStorage.removeItem("nom");
+    sessionStorage.removeItem("adresse");
+    sessionStorage.removeItem("mail");
+    sessionStorage.removeItem("lieux");
+    sessionStorage.removeItem("pdfURI");  
     });
 
 </script>
