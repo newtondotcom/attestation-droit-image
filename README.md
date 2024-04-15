@@ -1,26 +1,30 @@
-# Autorisation d'exploitation de l'image
+# Image Use Authorization
 
-Ce repo contient 3 formes d'autorisation d'exploitation de l'image, à utiliser pour les personnes qui apparaissent sur les photos et vidéos prises par Augereau Robin, agissant en tant que Entrepreneur individuel pour le compte de sa micro-entreprise.
+[French version](README_FR.md)
 
-- La première est générée en utilisant Latex, et est à signer à la main. 
+This repository contains 3 forms of image use authorization to be used for individuals appearing in photos and videos taken by Augereau Robin, acting as a Sole Trader for his micro-enterprise.
 
-- La seconde est générée en utilisant une bibliothèque Node.
+- The first form is generated using LaTeX and requires a handwritten signature.
 
-- La troisième est générée et signée depuis une page web avec le framework Svelte.
+- The second form is generated using a Node library.
 
-# Prestations 
+> The first two versions are stored in the `old` folder.
 
-Les prestations que je propose sont les suivantes :
-- vol en intérieur cinématique : publicités, visites immobilières virtuelles, etc.
-- vol en extérieur : publicités, captures d'évènements, etc.
+- The third form is generated and signed from a web page using the Svelte framework.
 
+## Services Offered
 
-# Evolution du projet
+The services I offer include:
 
-Les 3 formes correspondent à 3 étapes de développement du projet.
+- Cinematic indoor flights: for advertisements, virtual real estate tours, etc.
+- Outdoor flights: for advertisements, event captures, etc.
 
-- La première est la plus simple et la plus esthétique, le document est fait en Latex. Cependant, la regénérer sur un client web est compliqué.
+## Project Evolution
 
-- La seconde est générée en utilisant une bibliothèque Node. Il s'agit d'un test de la librairie permettant de générer des pdfs.
+The 3 forms correspond to 3 stages of project development.
 
-- La troisième, présente dans le dossier `v3`, est une web app faite avec Svelte qui permet de générer et signer numériquement l'autorisation ainsi que lui appliquer un traitement. 
+- The first is the simplest and most aesthetically pleasing, created in LaTeX. However, regenerating it on a web client is complex.
+
+- The second is generated using a Node library. It serves as a test of the library's capability to generate PDFs.
+
+- The third form, found in the `v3` folder, is a web app made with Svelte that allows for generating and digitally signing the authorization form and applying processing to it.
