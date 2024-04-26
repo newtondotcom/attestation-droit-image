@@ -25,7 +25,9 @@
     >
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-    <img src="https://droninside.fr/logo.png" alt="logo" class="h-8" on:click={()=>goto("/")}>
+    <a href="/">
+    <img src="https://droninside.fr/logo.png" alt="logo" class="h-8"/>
+    </a>
   
         <div class="flex flex-1 items-center justify-end md:justify-between">
           <ul class="flex items-center gap-6 text-sm">
