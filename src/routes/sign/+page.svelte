@@ -38,7 +38,7 @@
     });
 
 </script>
-
-<h1 class="mb-4 mx-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">Signez votre attestation</h1>
-
+<div class="text-lg flex flex-col justify-center items-center h-screen">
+<h1 class="mb-12 mx-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">Signez votre attestation</h1>
 <Canvas width={300} height={300} color="#333" trigger={trigger} loading={loading}/>
+</div>
