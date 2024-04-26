@@ -11,7 +11,7 @@
         body: JSON.stringify({
                 nom: sessionStorage.getItem("nom"),
                 adresse: sessionStorage.getItem("adresse"),
-                mail: sessionStorage.getItem("mail"),
+                email: sessionStorage.getItem("mail"),
                 lieux: sessionStorage.getItem("lieux"),
                 file_name: sessionStorage.getItem("pdfURI"),
         }),
