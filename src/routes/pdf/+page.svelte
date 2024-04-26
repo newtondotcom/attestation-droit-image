@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
-    import Pdf from "$lib/Pdf.svelte";
     import { onMount } from "svelte";
     import PdfViewer from "svelte-pdf";
 
