@@ -7,6 +7,6 @@ COPY --chown=node:node . .
 COPY --chown=node:node .env .
 RUN yarn
 RUN yarn build
-RUN rm -rf src/ static/ Dockerfile
+RUN rm -rf src/ Dockerfile
 
 CMD ["node","build/index.js"]
