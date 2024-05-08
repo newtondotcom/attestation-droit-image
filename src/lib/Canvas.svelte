@@ -145,7 +145,7 @@
 				></path></svg
 			>
 		{:else}
-			Envoyez mon attestation
+			Envoyez votre attestation
 		{/if}
 	</button>
 </div>
