@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import { MAIL_HOST, MAIL_PORT, MAIL_SSL, MAIL_USER, MAIL_PWD,DISCORD_WEBHOOK } from '$env/static/private';
 
-const url = "http://localhost:3000/pdf?file=";
+const url = "https://autorisation.droninside.fr/pdf?file=";
 
 const transporter = nodemailer.createTransport({
   host: MAIL_HOST,
