@@ -10,7 +10,7 @@
   
       <a
         href="/"
-        class="inline-block px-10 py-3 mt-6 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring"
+        class="inline-block px-10 py-3 mt-6 text-sm font-medium text-white bg-emerald-600 rounded hover:bg-emerald-700 focus:outline-none focus:ring"
       >
         Revenir à l'accueil
       </a>
